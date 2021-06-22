@@ -1,0 +1,51 @@
+package cl.inacap.cisonioApp.model.dto.transacciones;
+import java.time.LocalDate;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+
+import cl.inacap.cisonioApp.model.dto.productos.Detalle;
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Transaccion {
+	@Id
+    protected Integer idTransaccion;
+    protected LocalDate fecha;
+    protected int total;
+    
+    @OneToMany(mappedBy = "transaccion")
+    Set<Detalle> detalles;
+
+    public Transaccion() {
+    	super();
+    }
+    public Integer getCodigo() {
+        return this.idTransaccion;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.idTransaccion = codigo;
+    }
+
+    public LocalDate getFecha() {
+        return this.fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+}

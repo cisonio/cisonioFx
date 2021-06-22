@@ -1,0 +1,9 @@
+package cl.inacap.cisonioApp.model.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import cl.inacap.cisonioApp.model.dto.productos.Categoria;
+
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+	public Categoria findByNombre(String nombre);
+}

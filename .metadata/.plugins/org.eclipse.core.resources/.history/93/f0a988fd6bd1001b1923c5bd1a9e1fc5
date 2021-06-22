@@ -1,0 +1,11 @@
+package cl.inacap.cisonioApp.model.services;
+
+import cl.inacap.cisonioApp.model.repository.RepositoryFactory;
+
+public class ClienteServices {
+	@Autowired
+	Cliente Repositorio = RepositoryFactory.getDAOCLiente();
+	public List<Clientes> getAll(){
+		
+	}
+}

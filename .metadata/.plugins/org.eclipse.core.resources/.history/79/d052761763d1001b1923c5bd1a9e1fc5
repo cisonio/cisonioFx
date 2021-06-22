@@ -1,0 +1,5 @@
+package cl.inacap.cisonioApp.model.repository;
+
+public class RepositoryFactory {
+
+}

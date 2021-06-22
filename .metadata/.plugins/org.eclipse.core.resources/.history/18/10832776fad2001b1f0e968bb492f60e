@@ -1,0 +1,54 @@
+package cl.inacap.cisonioApp.model.dto.transacciones;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+
+@Entity
+@PrimaryKeyJoinColumn(name = "idPedido")
+public class Pedido extends Transaccion{
+    private String empresa;
+    private int campania;
+//    private Map<Descripcion,Integer> productos;
+//    
+//    public Pedido(Map<Descripcion, Integer> nuevosProductos, LocalDate hoy) {
+//		this.productos = nuevosProductos;
+//		this.fecha = hoy;
+//	}
+
+    public Pedido() {
+    	
+    }
+	public Pedido(Map<cl.inacap.cisonioApp.model.dto.productos.Descripcion, Integer> nuevosProductos, LocalDate hoy) {
+		// TODO Auto-generated constructor stub
+	}
+
+	//private List<Detalle> productos;
+    public String getEmpresa() {
+        return this.empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public int getCampania() {
+        return this.campania;
+    }
+
+    public void setCampania(int campania) {
+        this.campania = campania;
+    }
+
+
+//    public List<Descripcion> getProductos() {
+//        return this.productos;
+//    }
+//
+//    public void setProductos(List<Descripcion> productos) {
+//        this.productos = productos;
+//    }
+}

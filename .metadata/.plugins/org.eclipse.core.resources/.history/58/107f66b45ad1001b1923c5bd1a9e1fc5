@@ -1,0 +1,62 @@
+package cl.inacap.cisonio.model.dto;
+
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente{
+	@Id
+	@GeneratedValue( strategy = GenerationType.AUTO)
+	int idCliente;
+    String nombre;
+    String telefono;
+
+    public Cliente() {
+    	super();
+    }
+    
+    public Cliente(String nombre, String telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTelefono() {
+        return this.telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Cliente)) {
+            return false;
+        }
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(nombre, cliente.nombre) && telefono == cliente.telefono;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, telefono);
+    }
+
+
+}

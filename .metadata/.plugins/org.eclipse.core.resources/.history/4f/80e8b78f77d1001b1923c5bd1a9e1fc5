@@ -1,0 +1,56 @@
+package cl.inacap.cisonioApp.model.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import static org.springframework.data.jpa.domain.Specification.where;
+import cl.inacap.cisonioApp.model.repository.ClienteRepository;
+import cl.inacap.cisonioApp.model.repository.PagoRepository;
+import cl.inacap.cisonioApp.model.repository.RepositoryFactory;
+import cl.inacap.cisonioApp.model.repository.utils.Filter;
+import cl.inacap.cisonioApp.model.dto.Cliente;
+import cl.inacap.cisonioApp.model.dto.Pago;
+
+public class ClienteServices {
+
+	@Autowired
+	ClienteRepository repo = RepositoryFactory.getDAOCliente();
+	@Autowired
+	PagoRepository pago = RepositoryFactory.getDAO(PagoRepository.class);
+	
+
+	public List<Cliente> getAll() {
+		return repo.findAll();
+	}
+
+	public List<Cliente> getAll(String name) {
+		Specification<Cliente> nombreComo = where((root, query, criteriaBuilder) ->
+		criteriaBuilder.like(root.get("nombre"), "%"+name+"%"));
+        return repo.findAll(nombreComo);
+	    
+	}
+	
+	public List<Cliente> encontrarPorTelefono(String fono){
+		return repo.findByTelefono(fono);
+	}
+	
+	public Cliente guardar(Cliente c) {
+		return repo.saveAndFlush(c);
+	}
+	
+	public Pago guardar(Pago p) {
+		return pago.saveAndFlush(p);
+	}
+	
+	public List<Pago> estadoCuenta(Cliente c){
+		return pago.findByCliente(c);
+	}
+	public void borrar(Cliente c) {
+		repo.delete(c);
+		return;
+		
+	}
+	
+	
+}

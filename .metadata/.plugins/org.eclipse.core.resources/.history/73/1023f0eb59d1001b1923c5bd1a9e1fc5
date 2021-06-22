@@ -1,0 +1,53 @@
+package cl.inacap.cisonioApp.model.dto.transacciones;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+import cl.inacap.cisonioApp.model.dto.Cliente;
+import cl.inacap.cisonioApp.model.dto.productos.Detalle;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "idVenta")
+public class Venta extends Transaccion{
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idCliente")
+    private Cliente cliente;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idPedido")
+    private Pedido pedido;
+
+    public Cliente getCliente() {
+        return this.cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+//    public List<Detalle> getProductos() {
+//        return this.productos;
+//    }
+//
+//    public void setProductos(List<Detalle> productos) {
+//        this.productos = productos;
+//    }
+
+    public Pedido getPedido() {
+        return this.pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+//    public int getTotal() {
+//        int suma = 0;
+//        for(Detalle d: productos){
+//            suma += d.getDescripcion().getLastPrecio()*d.getCantidad();
+//        }return suma;
+//    }
+}

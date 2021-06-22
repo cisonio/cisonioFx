@@ -1,0 +1,7 @@
+cl.inacap.cisonioApp.model
+cl.inacap.cisonioApp.model.dto
+cl.inacap.cisonioApp.model.dto.productos
+cl.inacap.cisonioApp.model.dto.transacciones
+cl.inacap.cisonioApp.model.repository
+cl.inacap.cisonioApp.model.repository.utils
+cl.inacap.cisonioApp.model.services
