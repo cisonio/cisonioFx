@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Representa a un Cliente
+ * Esta clase representa al cliente de los productos 
  * @author Catalina
  * 
  */

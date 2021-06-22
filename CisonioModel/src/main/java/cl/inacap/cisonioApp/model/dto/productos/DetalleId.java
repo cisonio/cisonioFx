@@ -7,7 +7,8 @@ import cl.inacap.cisonioApp.model.dto.transacciones.Transaccion;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DetalleId es el id del detalle
+ * la clase  DetalleId es el id del detalle
+ *@author Catalina
  */
 @Embeddable
 public class DetalleId implements java.io.Serializable{

@@ -12,7 +12,8 @@ import cl.inacap.cisonioApp.model.dto.productos.Detalle;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Venta corresponde a una transaccion entre el usuario de la aplicacion y un cliente
+ * La clase Venta corresponde a una transaccion entre el usuario de la aplicacion y un cliente
+ *@author Catalina
  */
 @Entity
 @PrimaryKeyJoinColumn(name = "idVenta")

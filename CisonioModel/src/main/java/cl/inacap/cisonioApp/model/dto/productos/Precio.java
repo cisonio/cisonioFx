@@ -11,7 +11,8 @@ import javax.persistence.GenerationType;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Precio representa el precio de un producto en un rango de tiempo
+ * La clase  Precio representa el precio de un producto en un rango de tiempo
+ *author Catalina
  */
 @Entity
 public class Precio {

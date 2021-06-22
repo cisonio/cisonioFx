@@ -9,7 +9,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Pedido es un tipo de transaccion en el que se transfieren productos desde la empresa al usuario de la aplicacion
+ * la clase Pedido es un tipo de transaccion en el que se transfieren productos desde la empresa al usuario de la aplicacion
+ *@author Catalina
  */
 @Entity
 @PrimaryKeyJoinColumn(name = "idPedido")

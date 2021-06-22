@@ -15,6 +15,8 @@ import cl.inacap.cisonioApp.model.dto.transacciones.Transaccion;
 // TODO: Auto-generated Javadoc
 /**
  *Representa un detalle, un detalle relaciona una transaccion con las descripciones de los productos
+ *
+ *@author Catalina
  */
 @Entity
 public class Detalle{

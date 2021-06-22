@@ -13,7 +13,8 @@ import javax.persistence.ManyToOne;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Producto representa un producto concreto,  con fecha de vencimiento, un producto en inventario.
+ * La clase  Producto representa un producto concreto,  con fecha de vencimiento, un producto en inventario.
+ *@author Catalina
  */
 @Entity
 public class Producto implements Serializable{

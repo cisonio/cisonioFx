@@ -11,11 +11,19 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+/**
+ * esta clase pretende tener la configuración de CisonioModel
+ * @author chest
+ */
+ @Configuration
+ @EnableJpaRepositories(basePackages = "cl.inacap.cisonioApp.model.repository")
+ @PropertySource("cisonioModel.properties")
+ @EnableTransactionManagement
+ 
+ 
+ 
+ 
 
-@Configuration
-@EnableJpaRepositories(basePackages = "cl.inacap.cisonioApp.model.repository")
-@PropertySource("cisonioModel.properties")
-@EnableTransactionManagement
 public class CisonioModelConfig {
 	@Autowired
     private Environment env;

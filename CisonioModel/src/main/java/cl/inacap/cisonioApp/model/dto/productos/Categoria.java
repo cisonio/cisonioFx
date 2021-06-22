@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 // TODO: Auto-generated Javadoc
 /**
  * Representa la Categorias que puede adquirir un producto
+ * @ author Catalina
  */
 @Entity
 public class Categoria {

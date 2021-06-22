@@ -1,0 +1,14 @@
+cl.inacap.cisonioApp.model
+cl.inacap.cisonioApp.model.dto
+cl.inacap.cisonioApp.model.dto.productos
+cl.inacap.cisonioApp.model.dto.transacciones
+cl.inacap.cisonioApp.model.repository
+cl.inacap.cisonioApp.model.repository.utils
+cl.inacap.cisonioApp.model.services
+main.java.cl.inacap.cisonioApp.model
+main.java.cl.inacap.cisonioApp.model.dto
+main.java.cl.inacap.cisonioApp.model.dto.productos
+main.java.cl.inacap.cisonioApp.model.dto.transacciones
+main.java.cl.inacap.cisonioApp.model.repository
+main.java.cl.inacap.cisonioApp.model.repository.utils
+main.java.cl.inacap.cisonioApp.model.services

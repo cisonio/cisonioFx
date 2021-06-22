@@ -13,7 +13,8 @@ import cl.inacap.cisonioApp.model.dto.productos.Detalle;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Transaccion representa una transaccion, como compra, venta y guardar en inventario o abasteciomiento
+ * La clase Transaccion representa una transaccion, como compra, venta y guardar en inventario o abasteciomiento
+ *@author Catalina
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

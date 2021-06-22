@@ -6,7 +6,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**|cl/inacap/cisonioApp/fx/|cl/inacap/cisonioApp/fx/" kind="src" output="target/classes" path="src/resources">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>

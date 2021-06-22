@@ -12,7 +12,8 @@ import cl.inacap.cisonioApp.model.dto.productos.Producto;
 // TODO: Auto-generated Javadoc
 
 /**
- * The Class Abastecimiento corresponde a un tipo de transaccion, en especifico a la accion de guardar cosas en el inventario
+ * La clase  Abastecimiento corresponde a un tipo de transaccion, en especifico a la accion de guardar cosas en el inventario
+ *@author Catalina
  */
 @Entity
 @PrimaryKeyJoinColumn(name = "idAbastecimiento")
