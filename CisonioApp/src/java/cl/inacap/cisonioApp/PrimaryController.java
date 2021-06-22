@@ -8,24 +8,30 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PrimaryController controla a la escena primary
+ */
 public class PrimaryController {
 
+	/** The side bar box es la barra de menu que contiene atajos a las funcionalidades de la aplicacion */
 	@FXML
 	private VBox sideBarBox;
 	
+	/** en el anchor pane contenPane va el contenido de la pestana */
 	@FXML
 	private AnchorPane contentPane;
 	
+	/** The crear nuevo pedido label permite abrir una nueva transaccion de pedido */
 	@FXML
 	private Label crearNuevoPedido;
 	
-	
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    
    
+    /**
+     * Open new pedido abre un nuevo stage con la scena de nuevo pedido.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     private void openNewPedido() throws IOException {
     	//Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -38,6 +44,6 @@ public class PrimaryController {
 			System.out.println("stage issue");
 			stage = null;
 		}
-    	App.newPage("pedidos",stage);
+    	App.newPage("/cl/inacap/cisonioApp/fx/pedidos.fxml",stage);
     }
 }

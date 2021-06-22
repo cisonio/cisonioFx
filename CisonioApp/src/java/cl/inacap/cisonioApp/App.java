@@ -28,7 +28,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
     	Cliente cliente;
-        scene = new Scene(loadFXML("primary"), 800, 480);
+        scene = new Scene(loadFXML("/cl/inacap/cisonioApp/fx/primary.fxml"), 800, 480);
         scene.getStylesheets().add("/Colores.css");
         JMetro jmetro = new JMetro(Style.LIGHT);
         jmetro.setScene(scene);
@@ -37,23 +37,23 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         javafx.scene.text.Font.getFamilies().forEach(System.out::println);
-        ClienteServices clienteDAO = new ClienteServices();
-        long start = System.currentTimeMillis();
-        List<Cliente> clientes = clienteDAO.getAll();
-        long end = System.currentTimeMillis();
-        long timeTaken = end - start;
-        
-        long start1 = System.currentTimeMillis();
-        List<Cliente> clientes2 = clienteDAO.getAll();
-        long end2 = System.currentTimeMillis();
-        long timeTaken2 = end2 - start1;
-        long start3 = System.currentTimeMillis();
-        List<Cliente> clientes3 = clienteDAO.getAll("ce");
-        long end3 = System.currentTimeMillis();
-        long timeTaken3 = end3 - start3;
-        System.out.println("Query took " + timeTaken + "ms");
-        System.out.println("2 Query took " + timeTaken2 + "ms");
-        System.out.println("3 Query took " + timeTaken3 + "ms");
+//        ClienteServices clienteDAO = new ClienteServices();
+//        long start = System.currentTimeMillis();
+//        List<Cliente> clientes = clienteDAO.getAll();
+//        long end = System.currentTimeMillis();
+//        long timeTaken = end - start;
+//        
+//        long start1 = System.currentTimeMillis();
+//        List<Cliente> clientes2 = clienteDAO.getAll();
+//        long end2 = System.currentTimeMillis();
+//        long timeTaken2 = end2 - start1;
+//        long start3 = System.currentTimeMillis();
+//        List<Cliente> clientes3 = clienteDAO.getAll("ce");
+//        long end3 = System.currentTimeMillis();
+//        long timeTaken3 = end3 - start3;
+//        System.out.println("Query took " + timeTaken + "ms");
+//        System.out.println("2 Query took " + timeTaken2 + "ms");
+//        System.out.println("3 Query took " + timeTaken3 + "ms");
         
         
         
@@ -65,7 +65,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/cl/inacap/cisonioApp/fx/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
         return fxmlLoader.load();
     }
 
