@@ -10,9 +10,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" styleClass="borde" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.inacap.cisonioApp.PedidoController">
+<HBox alignment="CENTER" prefHeight="920.0" prefWidth="1318.0" styleClass="borde" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="500.0" styleClass="raiz">
+      <BorderPane prefHeight="760.0" prefWidth="680.0" styleClass="raiz" HBox.hgrow="ALWAYS">
          <top>
             <AnchorPane fx:id="top" maxHeight="35.0" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -blue-jeans;" BorderPane.alignment="CENTER">
                <children>
@@ -28,18 +28,63 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <StackPane layoutX="194.0" layoutY="82.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <StackPane fx:id="paneles" layoutX="194.0" layoutY="82.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <HBox fx:id="pane04Done" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="TOP" styleClass="ms-font-xxl" text="¡Haz procesado todo el pedido!" />
+                              <Label alignment="CENTER" contentDisplay="TOP" prefWidth="800.0" styleClass="ms-font-xxl" text="¡Haz procesado todo el pedido!" />
                            </children>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="pane01Info" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
+                           <children>
+                              <VBox minWidth="280.0" prefHeight="582.0" prefWidth="504.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox prefHeight="80.0" prefWidth="400.0">
+                                       <children>
+                                          <Label styleClass="ms-font-xl" text="Información Preliminar" />
+                                          <Label styleClass="ms-font-l" text="Para comenzar selecciona la empresa y ingresa el número de campaña" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <FlowPane alignment="CENTER" hgap="30.0" prefHeight="10.0" prefWidth="400.0" vgap="30.0">
+                                             <children>
+                                                <Label styleClass="ms-font-m-plus" text="Empresa" />
+                                                <ChoiceBox fx:id="empresaCbox" onMouseClicked="#hideVal" prefWidth="150.0" />
+                                             </children>
+                                          </FlowPane>
+                                          <Label fx:id="empresaVal" styleClass="validation" text="Por favor seleccione la empresa" visible="false" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <FlowPane alignment="CENTER" hgap="30.0" prefHeight="10.0" prefWidth="400.0">
+                                             <children>
+                                                <Label styleClass="ms-font-m-plus" text="Campaña" />
+                                                <TextField fx:id="campanaTxt" onAction="#hideVal" />
+                                             </children>
+                                          </FlowPane>
+                                          <Label fx:id="campanaVal" styleClass="validation" text="Por favor ingrese el numero de la campaña" visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </StackPane.margin>
                         </HBox>
                         <HBox fx:id="pane03Clasificar" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
                            <children>
-                              <VBox alignment="CENTER" minWidth="400.0" prefHeight="200.0" prefWidth="100.0">
+                              <VBox alignment="CENTER" minWidth="400.0" prefHeight="200.0" prefWidth="800.0">
                                  <children>
-                                    <VBox id="GuardarProductosButton" alignment="CENTER_LEFT" maxHeight="100.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0" styleClass="custom-button">
+                                    <VBox id="GuardarProductosButton" alignment="CENTER_LEFT" fillWidth="false" maxHeight="100.0" maxWidth="450.0" onMouseClicked="#guardarProductos" prefHeight="200.0" prefWidth="400.0" spacing="3.0" styleClass="custom-button" VBox.vgrow="NEVER">
                                        <children>
                                           <Label styleClass="ms-font-xl" text="Guardar Productos" wrapText="true">
                                              <font>
@@ -55,8 +100,11 @@
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
+                                       <VBox.margin>
+                                          <Insets left="50.0" right="50.0" />
+                                       </VBox.margin>
                                     </VBox>
-                                    <VBox id="VenderProductosButton" alignment="CENTER_LEFT" maxHeight="100.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0" styleClass="custom-button">
+                                    <VBox id="VenderProductosButton" alignment="CENTER_LEFT" fillWidth="false" maxHeight="100.0" maxWidth="450.0" onMouseClicked="#venderProductos" prefHeight="200.0" prefWidth="100.0" spacing="3.0" styleClass="custom-button" VBox.vgrow="NEVER">
                                        <children>
                                           <Label styleClass="ms-font-xl" text="Vender Productos" wrapText="true">
                                              <font>
@@ -72,68 +120,13 @@
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
+                                       <VBox.margin>
+                                          <Insets left="50.0" right="50.0" />
+                                       </VBox.margin>
                                     </VBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox fx:id="pane02Productos" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
-                           <children>
-                              <VBox minWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                                 <children>
-                                    <VBox prefHeight="75.0" prefWidth="400.0" VBox.vgrow="NEVER">
-                                       <children>
-                                          <Label styleClass="ms-font-xl" text="Agregar Productos" />
-                                          <Label styleClass="ms-font-l" text="Ingresa los códigos de los productos que llegaron en el pedido" wrapText="true" />
-                                       </children>
-                                    </VBox>
-                                    <HBox prefHeight="24.0" prefWidth="400.0" spacing="15.0">
-                                       <children>
-                                          <TextField />
-                                          <Button mnemonicParsing="false" text="Agregar" />
-                                       </children>
-                                    </HBox>
-                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                       <content>
-                                          <TableView prefHeight="541.0" prefWidth="397.0">
-                                            <columns>
-                                              <TableColumn prefWidth="75.0" text="C1" />
-                                              <TableColumn prefWidth="75.0" text="C2" />
-                                            </columns>
-                                          </TableView>
-                                       </content>
-                                    </ScrollPane>
                                  </children>
                                  <HBox.margin>
-                                    <Insets bottom="35.0" top="35.0" />
-                                 </HBox.margin>
-                              </VBox>
-                           </children></HBox>
-                        <HBox fx:id="pane01Info" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
-                           <children>
-                              <VBox minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <VBox prefHeight="80.0" prefWidth="400.0">
-                                       <children>
-                                          <Label styleClass="ms-font-xl" text="Información Preliminar" />
-                                          <Label styleClass="ms-font-l" text="Para comenzar selecciona la empresa y ingresa el número de campaña" wrapText="true" />
-                                       </children>
-                                    </VBox>
-                                    <FlowPane alignment="CENTER" hgap="30.0" prefHeight="59.0" prefWidth="400.0" vgap="30.0">
-                                       <children>
-                                          <Label styleClass="ms-font-m-plus" text="Empresa" />
-                                          <ChoiceBox prefWidth="150.0" />
-                                       </children>
-                                    </FlowPane>
-                                    <FlowPane alignment="CENTER" hgap="30.0" prefHeight="80.0" prefWidth="400.0">
-                                       <children>
-                                          <Label styleClass="ms-font-m-plus" text="Campaña" />
-                                          <TextField />
-                                       </children>
-                                    </FlowPane>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                    <Insets left="50.0" right="50.0" />
                                  </HBox.margin>
                               </VBox>
                            </children>
@@ -148,7 +141,7 @@
                <children>
                   <HBox alignment="CENTER" layoutX="415.0" layoutY="-36.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: -blanco" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button id="aceptarBtn" fx:id="acaptarBtn" defaultButton="true" mnemonicParsing="false" onAction="#avanzar" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Siguiente" />
+                        <Button id="aceptarBtn" fx:id="aceptarBtn" defaultButton="true" mnemonicParsing="false" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Siguiente" />
                         <Button id="cancelarBtn" fx:id="cancelarBtn" cancelButton="true" mnemonicParsing="false" onAction="#close" styleClass="ms-font-m" text="Cancelar" />
                      </children>
                      <padding>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<fx:root type="javafx.scene.control.ListCell" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<graphic>
+	<HBox  fx:id="itemHbox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="400.0" spacing="15.0" stylesheets="@../../../../styles/Fonts.css">
+	   <children>
+	      <CheckBox fx:id="seleccionChBx" minWidth="17.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" />
+	      <Label fx:id="codigoLbl" minWidth="100.0" styleClass="ms-font-s-plus" text="151515" />
+	      <Label fx:id="nombreLbl" minWidth="200.0" styleClass="ms-font-s-plus" />
+	   </children>
+	   <padding>
+	      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+	   </padding>
+	</HBox>
+	</graphic>
+</fx:root>

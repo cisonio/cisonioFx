@@ -71,7 +71,7 @@ public class Start {
 			public static void main(String[] args) { 
 				Start start = new Start();
 				//start.categoriaTest();
-				start.clienteTest();
+				//start.clienteTest();
 				//start.descripcionTest();
 				//start.pagoTest();
 				//start.pedidoTest();

@@ -2,6 +2,8 @@ package cl.inacap.cisonioApp.model.services;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import static org.springframework.data.jpa.domain.Specification.where;
@@ -9,6 +11,7 @@ import cl.inacap.cisonioApp.model.repository.ClienteRepository;
 import cl.inacap.cisonioApp.model.repository.PagoRepository;
 import cl.inacap.cisonioApp.model.repository.RepositoryFactory;
 import cl.inacap.cisonioApp.model.repository.utils.Filter;
+import cl.inacap.cisonioApp.model.CisonioModelConfig;
 import cl.inacap.cisonioApp.model.dto.Cliente;
 import cl.inacap.cisonioApp.model.dto.Pago;
 
@@ -22,11 +25,11 @@ public class ClienteServices {
 
 	/** repo es el repositorio de clientes*/
 	@Autowired
-	ClienteRepository repo = RepositoryFactory.getDAOCliente();
+	ClienteRepository repo = RepositoryFactory.getClienteDAO();
 	
 	/** pago es el repositorio de pagos */
 	@Autowired
-	PagoRepository pago = RepositoryFactory.getDAO(PagoRepository.class);
+	PagoRepository pago = RepositoryFactory.getPagoDAO();
 	
 
 	/**
@@ -65,10 +68,15 @@ public class ClienteServices {
 	 * Guarda, (crea o updatea) un cliente
 	 *
 	 * @param c es el cliente a guardar
+	 * @return 
 	 */
-	public void guardar(Cliente c) {
-		repo.saveAndFlush(c);
-		return; 
+	public Cliente guardar(Cliente c) {
+		RepositoryFactory.getEm().getTransaction().begin();
+		Cliente guardado = repo.saveAndFlush(c);
+		RepositoryFactory.getEm().getTransaction().commit();
+		RepositoryFactory.getEm().refresh(c);
+		return guardado;
+		
 	}
 	
 	/**
@@ -77,9 +85,13 @@ public class ClienteServices {
 	 * @param p es el pago a guardar
 	 * @return the pago
 	 */
-	public void guardar(Pago p) {
-		pago.saveAndFlush(p);
-		return;
+	public Pago guardar(Pago p) {
+		RepositoryFactory.getEm().getTransaction().begin();
+		Pago pagos = pago.saveAndFlush(p);
+		RepositoryFactory.getEm().getTransaction().commit();
+		RepositoryFactory.getEm().refresh(p);
+		RepositoryFactory.getEm().refresh(p.getCliente());
+		return pagos;
 	}
 	
 	/**
@@ -103,6 +115,12 @@ public class ClienteServices {
 		return;		
 	}
 	
+	public List<Cliente> getAllDeudores() {
+		
+		return repo.findDebtors();
+	}
+	
+	
 	/**
 	 * Borrar pago p
 	 *
@@ -112,6 +130,10 @@ public class ClienteServices {
 		pago.delete(p);
 		pago.flush();
 		return;
+	}
+
+	public List<Cliente> getAllActive() {
+		return repo.findActive();
 	}
 	
 	

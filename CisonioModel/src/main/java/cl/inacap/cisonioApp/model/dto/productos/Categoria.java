@@ -1,5 +1,6 @@
 package cl.inacap.cisonioApp.model.dto.productos;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -159,4 +160,25 @@ public class Categoria {
 	/** Descripciones(o producos) pertenecientes a la categoria. */
 	@ManyToMany(mappedBy="categoria")
 	private List<Descripcion> descripciones;
+	
+	public String printCategoryTree() {
+		Categoria analizada = this.padre;
+		String ans = this.nombre;
+		while(!(analizada == null)) {
+			ans = analizada.getNombre() + ">" + ans;
+			analizada = analizada.padre;
+		}return ans;
+	}
+	
+	public List<Categoria> getCategoryTree(){
+		Categoria antecesor = this.padre;
+		List<Categoria> ans = new ArrayList<Categoria>();
+		ans.add(this);
+		while(antecesor != null) {
+			ans.add(0, antecesor);
+			antecesor = antecesor.padre;
+		}
+		return ans;
+	}
 }
+

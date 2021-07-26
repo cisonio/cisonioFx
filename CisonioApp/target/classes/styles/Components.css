@@ -12,3 +12,11 @@
 	background-color: #ffffff00;
 	-fx-background-color: #ffffff00
 }
+
+.validation{
+	-fx-text-fill: -bittersweet;
+}
+
+.done{
+	-fx-text-fill: -green-blue-crayola;
+}

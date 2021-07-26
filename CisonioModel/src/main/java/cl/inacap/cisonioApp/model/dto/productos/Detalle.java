@@ -161,7 +161,32 @@ public class Detalle{
 	@JoinColumn(name="producto")
 	private Descripcion producto;
     
-    /** cantidad de productos transados */
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((producto == null) ? 0 : producto.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Detalle other = (Detalle) obj;
+		if (producto == null) {
+			if (other.producto != null)
+				return false;
+		} else if (!producto.equals(other.producto))
+			return false;
+		return true;
+	}
+
+	/** cantidad de productos transados */
     private int cantidad;
 	
 	/** precio al que se compro el producto */
@@ -178,6 +203,25 @@ public class Detalle{
     /**
      * Instantiates a new detalle.
      */
+	public void Quitar(int cantidad) {
+		if(this.cantidad >= cantidad) {
+			this.cantidad -= cantidad;
+		}
+	}
+	
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	public void Agregar(int cantidad) {
+		if(0 <= cantidad) {
+			this.cantidad += cantidad;
+		}
+	}
+	
     public Detalle() {
     	super();
     }

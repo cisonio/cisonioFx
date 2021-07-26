@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root alignment="TOP_CENTER" prefHeight="364.0" prefWidth="500.0" style="-fx-background-color: -blanco;" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox minWidth="400.0" prefHeight="200.0" prefWidth="800.0" spacing="15.0" HBox.hgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="75.0" prefWidth="400.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label styleClass="ms-font-xl" text="Agregar Productos" />
+                  <Label styleClass="ms-font-l" text="Ingresa los códigos de los productos que llegaron en el pedido" wrapText="true" />
+               </children>
+            </VBox>
+            <HBox prefHeight="24.0" prefWidth="400.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="codigoTxt" />
+                  <Button fx:id="agregarDescBtn" mnemonicParsing="false" onAction="#buscarYAgregar" text="Agregar" />
+               </children>
+            </HBox>
+            <ScrollPane fx:id="tableSP" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <TableView fx:id="productosTableView" editable="true" prefHeight="578.0" prefWidth="581.0">
+                     <columns>
+                        <TableColumn fx:id="codigoCol" editable="false" prefWidth="106.0" text="Codigo" />
+                        <TableColumn fx:id="nombreCol" prefWidth="255.0" text="Nombre Producto" />
+                        <TableColumn fx:id="precioCol" minWidth="0.0" prefWidth="122.0" sortable="false" text="Precio" />
+                        <TableColumn fx:id="cantidadCol" minWidth="30.0" prefWidth="97.0" sortable="false" text="Ctd" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <HBox alignment="TOP_RIGHT" prefHeight="24.0" prefWidth="400.0" spacing="15.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" styleClass="ms-font-l" text="Total:" />
+                  <Label fx:id="totalTxt" alignment="CENTER_RIGHT" styleClass="ms-font-l" text="Label" />
+               </children>
+            </HBox>
+         </children>
+         <HBox.margin>
+            <Insets bottom="35.0" left="50.0" right="50.0" top="35.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</fx:root>

@@ -1,8 +1,11 @@
 package cl.inacap.cisonioApp.model.dto.transacciones;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -21,6 +24,7 @@ public class Transaccion {
 	
 	/** The id transaccion. */
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     protected Integer idTransaccion;
     
     /** fecha corresponde a la fecha en la que se realiza la transaccion*/
@@ -31,7 +35,15 @@ public class Transaccion {
     
     /** los detalles corresponden a los productos transados en la transaccion. */
     @OneToMany(mappedBy = "transaccion")
-    Set<Detalle> detalles;
+    List<Detalle> detalles;
+
+    public List<Detalle> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<Detalle> detalles) {
+        this.detalles = detalles;
+    }
 
     /**
      * Instantiates a new transaccion.

@@ -1,12 +1,21 @@
 
 package cl.inacap.cisonioApp.model.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
+
+import cl.inacap.cisonioApp.model.dto.productos.Precio;
 
 /**
  * Representa a un Cliente
@@ -21,7 +30,8 @@ public class Cliente{
 	 * id del Cliente
 	 */
 	@Id
-	@GeneratedValue( strategy = GenerationType.AUTO)
+	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(generator="increment")
 	int idCliente;
     /**
      *
@@ -81,8 +91,20 @@ public class Cliente{
     public String getTelefono() {
         return this.telefono;
     }
+    
+    @OneToMany(mappedBy="cliente")
+    @Fetch(FetchMode.JOIN)
+    private List<Pago> pagos = new ArrayList<Pago>();
 
-    /**
+    public List<Pago> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(List<Pago> pagos) {
+		this.pagos = pagos;
+	}
+
+	/**
      * Setter del atributo telefono
      * @param telefono telefono del cliente
      */

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -20,6 +21,8 @@ public class CisonioModelConfig {
 	@Autowired
     private Environment env;
     
+	public static HibernateTransactionManager hibernateTransactionManager;
+	
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -27,7 +30,8 @@ public class CisonioModelConfig {
         dataSource.setUrl(env.getProperty("jdbc.url"));
         dataSource.setUsername(env.getProperty("jdbc.user"));
         dataSource.setPassword(env.getProperty("jdbc.pass"));
-
+        hibernateTransactionManager = new HibernateTransactionManager();
+		hibernateTransactionManager.setDataSource(dataSource);
         return dataSource;
     }
 }

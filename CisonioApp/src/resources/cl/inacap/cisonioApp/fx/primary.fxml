@@ -14,129 +14,220 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="720.0" prefWidth="1024.0" styleClass="raiz" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.inacap.cisonioApp.PrimaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="852.0" prefWidth="1137.0" style="-fx-background-color: -blanco;" styleClass="raiz" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<center>
-		<AnchorPane BorderPane.alignment="TOP_LEFT">
-			<children>
-            <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-      				<AnchorPane prefHeight="718.0" prefWidth="922.0">
-      					<children>
-                        <HBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="922.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane style="-fx-background-color: -blanco;">
+         <children>
+            <HBox fx:id="pane03Inventario" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="922.0" style="-fx-background-color: -blanco;">
+               <children>
+                  <ScrollPane fx:id="pane03SP" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <content>
+                        <VBox prefHeight="720.0" prefWidth="922.0" spacing="20.0" style="-fx-background-color: -blanco;">
                            <children>
-                              <AnchorPane maxWidth="1000.0" prefHeight="703.0" prefWidth="902.0" style="-fx-background-color: -white;" HBox.hgrow="ALWAYS">
+                              <VBox prefHeight="87.0" prefWidth="822.0">
                                  <children>
-                  						<VBox alignment="CENTER" prefHeight="720.0" prefWidth="922.0" spacing="20.0" style="-fx-background-color: -white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label styleClass="ms-font-xl" text="Inventario" />
+                                    <Label styleClass="ms-font-l" text="Aqui podras ver los productos en tu inventario y su fecha de vencimiento, agregar y eliminar productos de inventario y seleccionar productos de tu inventario para venderlos a un cliente" wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="buscarYFiltrarVBox" spacing="5.0">
+                                 <children>
+                                    <Label styleClass="ms-font-l" text="Buscar y Filtrar:" wrapText="true" />
+                                    <FlowPane hgap="10.0" prefHeight="30.0" prefWidth="822.0" vgap="10.0" VBox.vgrow="NEVER">
                                        <children>
-                                          <AnchorPane style="-fx-background-color: -blue-jeans;" VBox.vgrow="NEVER">
+                                          <FlowPane hgap="5.0" maxHeight="29.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="209.0" rowValignment="TOP" vgap="5.0">
                                              <children>
-                                                <Label fx:id="crearNuevoPedido" alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="420.0" onMouseClicked="#openNewPedido" prefHeight="35.0" text="Crear Nuevo Pedido" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <font>
-                                                      <Font name="Segoe UI Semibold" size="18.0" />
-                                                   </font>
-                                                   <styleClass>
-                                                      <String fx:value="custom-button" />
-                                                      <String fx:value="ms-font-xl" />
-                                                   </styleClass>
+                                                <Label styleClass="ms-font-m-plus" text="Término" />
+                                                <TextField fx:id="terminoTxt" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0" maxHeight="29.0" prefHeight="29.0" prefWidth="206.0" vgap="5.0">
+                                             <children>
+                                                <Label styleClass="ms-font-m-plus" text="Campo:" />
+                                                <ChoiceBox fx:id="CampoCbox" prefWidth="150.0" />
+                                             </children>
+                                          </FlowPane>
+                                          <FlowPane hgap="5.0" maxHeight="29.0" prefHeight="29.0" prefWidth="212.0" vgap="5.0">
+                                             <children>
+                                                <Label styleClass="ms-font-m-plus" text="Empresa:" />
+                                                <ChoiceBox fx:id="EmpresaCBox" prefHeight="23.0" prefWidth="145.0" />
+                                             </children>
+                                          </FlowPane>
+                                          <Button fx:id="filtrarBtn" alignment="TOP_LEFT" mnemonicParsing="false" style="-fx-background-color: -blue-jeans;" styleClass="ms-font-m-plus" text="Filtrar" textFill="WHITE" />
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                              <ScrollPane fx:id="fullProductoTVSP" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <TableView fx:id="fullProductosTV" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="803.0">
+                                       <columns>
+                                          <TableColumn fx:id="codigoCol" prefWidth="120.0" text="Codigo" />
+                                          <TableColumn fx:id="nombreProdCol" minWidth="0.0" prefWidth="293.0" text="Producto" />
+                                          <TableColumn fx:id="precioCompraCol" prefWidth="161.0" text="Precio Compra" />
+                                          <TableColumn fx:id="fechaVencimientoCol" prefWidth="228.0" text="Fecha Vencimiento" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <FlowPane fx:id="pane03HyperFlowPane" alignment="TOP_CENTER" prefHeight="45.0" prefWidth="822.0">
+                                 <children>
+                                    <Hyperlink fx:id="agregarProdHL" styleClass="ms-font-m-plus" text="Agregar Producto" />
+                                    <Hyperlink fx:id="borrarProdHL" onAction="#editTable" styleClass="ms-font-m-plus" text="Eliminar Producto" />
+                                    <Hyperlink fx:id="venderProdHL" styleClass="ms-font-m-plus" text="Nueva Venta" />
+                                    <Hyperlink fx:id="verProdHL" styleClass="ms-font-m-plus" text="Volver" />
+                                 </children>
+                              </FlowPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <HBox fx:id="pane01Inicio" prefHeight="720.0" prefWidth="922.0" style="-fx-background-color: -blanco;">
+               <children>
+                  <ScrollPane fx:id="pane01SP" prefViewportHeight="620.0" prefViewportWidth="822.0" style="-fx-background-color: -blanco;" HBox.hgrow="ALWAYS">
+                     <content>
+      						<VBox maxWidth="922.0" prefHeight="871.0" prefWidth="922.0" spacing="20.0" style="-fx-background-color: -blanco;">
+                           <children>
+                              <AnchorPane style="-fx-background-color: -blue-jeans;" VBox.vgrow="NEVER">
+                                 <children>
+                                    <Label fx:id="crearNuevoPedido" alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="420.0" onMouseClicked="#openNewPedido" prefHeight="35.0" text="Crear Nuevo Pedido" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Segoe UI Semibold" size="18.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="custom-button" />
+                                          <String fx:value="ms-font-xl" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane VBox.vgrow="ALWAYS">
+                                 <children>
+            								<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            									<children>
+                                          <AnchorPane style="-fx-background-color: -blue-jeans;">
+                                             <children>
+                                                <Label alignment="TOP_CENTER" contentDisplay="CENTER" focusTraversable="false" maxWidth="-Infinity" minWidth="420.0" prefHeight="35.0" styleClass="ms-font-xl" text="Productos por Vencer" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <cursor>
+                                                      <Cursor fx:constant="NONE" />
+                                                   </cursor>
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane VBox.vgrow="ALWAYS">
+            										<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="150.0" prefWidth="420.0" VBox.vgrow="ALWAYS">
+            											<content>
+            												<TableView fx:id="productosTV" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="890.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="fechaVencimiento2Col" prefWidth="228.0" text="Fecha Vencimiento" />
+                                                      <TableColumn fx:id="nombreProd2Col" minWidth="0.0" prefWidth="293.0" text="Producto" />
+                                                   </columns></TableView>
+            											</content>
+            										</ScrollPane>	
+                                    			</children>
+            								</VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox alignment="CENTER" maxWidth="600.0" minWidth="300.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AnchorPane prefHeight="32.0" style="-fx-background-color: -blue-jeans;">
                                              <children>
-                        								<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        									<children>
-                                                      <AnchorPane style="-fx-background-color: -blue-jeans;">
-                                                         <children>
-                                                            <Label alignment="TOP_CENTER" contentDisplay="CENTER" focusTraversable="false" maxWidth="-Infinity" minWidth="420.0" prefHeight="35.0" styleClass="ms-font-xl" text="Productos por Vencer" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <cursor>
-                                                                  <Cursor fx:constant="NONE" />
-                                                               </cursor>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                        										<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="150.0" prefWidth="420.0" VBox.vgrow="ALWAYS">
-                        											<content>
-                        												<TableView maxHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="418.0">
-                        													<columns>
-                        														<TableColumn prefWidth="147.0" text="Fecha de Vencimiento" />
-                        														<TableColumn minWidth="3.0" text="Producto" />
-                        													</columns>
-                        												</TableView>
-                        											</content>
-                        										</ScrollPane>
-                        										
-                        									</children>
-                        								</VBox>
+                                                <Label alignment="TOP_CENTER" contentDisplay="CENTER" minHeight="35.0" style="-fx-background-color: -blue-jeans;" styleClass="ms-font-xl" text="Deudas" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <VBox alignment="CENTER" maxWidth="600.0" minWidth="300.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="32.0" style="-fx-background-color: -blue-jeans;">
-                                                         <children>
-                                                            <Label alignment="TOP_CENTER" contentDisplay="CENTER" minHeight="35.0" style="-fx-background-color: -blue-jeans;" styleClass="ms-font-xl" text="Deudas" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="150.0" style="-fx-background-color: -congo-pink;" VBox.vgrow="ALWAYS">
-                                                         <content>
-                                                            <TableView maxHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="350.0">
-                                                               <columns>
-                                                                  <TableColumn prefWidth="147.0" text="Fecha de Vencimiento" />
-                                                                  <TableColumn minWidth="3.0" text="Producto" />
-                                                               </columns>
-                                                            </TableView>
-                                                         </content>
-                                                      </ScrollPane>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: -blue-jeans;">
-                                                         <children>
-                                                            <Label alignment="TOP_CENTER" contentDisplay="CENTER" minHeight="35.0" styleClass="ms-font-xl" text="Ingresos y Gastos" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="150.0" style="-fx-background-color: -congo-pink;" VBox.vgrow="ALWAYS">
-                                                         <content>
-                                                            <TableView maxHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="418.0">
-                                                               <columns>
-                                                                  <TableColumn prefWidth="147.0" text="Fecha de Vencimiento" />
-                                                                  <TableColumn minWidth="3.0" text="Producto" />
-                                                               </columns>
-                                                            </TableView>
-                                                         </content>
-                                                      </ScrollPane>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
+                                          <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="150.0" style="-fx-background-color: -congo-pink;" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView fx:id="clientesTV" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="350.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="nombreCliente2Col" prefWidth="268.0" text="Cliente" />
+                                                      <TableColumn fx:id="deudaActual2Col" prefWidth="114.0" text="Deuda" />
+                                                   </columns></TableView>
+                                             </content>
+                                          </ScrollPane>
                                        </children>
-                                       <padding>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </padding>
                                     </VBox>
                                  </children>
                               </AnchorPane>
+                              <VBox prefHeight="103.0" prefWidth="892.0" style="-fx-background-color: -blanco;" VBox.vgrow="ALWAYS" />
                            </children>
-                        </HBox>
-      					</children>
-      				</AnchorPane>
-               </content>
-            </ScrollPane>
-			</children>
-		</AnchorPane>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <HBox fx:id="pane02Clientes" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="922.0" style="-fx-background-color: -blanco;">
+               <children>
+                  <ScrollPane fx:id="pane02SP" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <content>
+                        <VBox fx:id="clienteVbox" prefHeight="720.0" prefWidth="922.0" spacing="20.0" style="-fx-background-color: -blanco;">
+                           <children>
+                              <VBox prefHeight="62.0" prefWidth="822.0">
+                                 <children>
+                                    <Label styleClass="ms-font-xl" text="Clientes" />
+                                    <Label styleClass="ms-font-l" text="Aqui podras ver a tus clientes, sus deudas, Agregar nuevos clientes y modificar sus deudas." wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <ScrollPane fx:id="fullClientTVSP" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <TableView fx:id="fullClientesTV" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="803.0">
+                                       <columns>
+                                          <TableColumn fx:id="nombreClienteCol" prefWidth="268.0" text="Cliente" />
+                                          <TableColumn fx:id="totalGastadoCol" minWidth="0.0" prefWidth="214.0" text="Comprado" />
+                                          <TableColumn fx:id="totalPagadoCol" prefWidth="206.0" text="Pagado" />
+                                          <TableColumn fx:id="deudaActualCol" prefWidth="114.0" text="Deuda" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <FlowPane alignment="TOP_CENTER" prefHeight="45.0" prefWidth="822.0">
+                                 <children>
+                                    <Hyperlink onMouseClicked="#agregarCliente" styleClass="ms-font-m-plus" text="Agregar Nuevo Cliente" />
+                                 </children>
+                              </FlowPane>
+                              <VBox fx:id="agregarPagoVBox">
+                                 <children>
+                                    <Label styleClass="ms-font-l" text="Agregar Pago" wrapText="true" />
+                                    <FlowPane hgap="15.0" prefHeight="0.0" prefWidth="822.0" vgap="15.0">
+                                       <children>
+                                          <Label styleClass="ms-font-m" text="Cliente: " />
+                                          <ComboBox fx:id="clienteComboBox" prefWidth="150.0" />
+                                          <Label styleClass="ms-font-m" text="Monto:" />
+                                          <TextField fx:id="montoTxt" />
+                                          <Button fx:id="agregarPagoBtn" mnemonicParsing="false" onAction="#validarPago" style="-fx-background-color: -blue-jeans;" styleClass="ms-font-m-plus" text="Agregar" textFill="WHITE" />
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
 	</center>
    <left>
       <AnchorPane style="-fx-background-color: -congo-pink;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
 				<VBox fx:id="SideBarBox" alignment="CENTER" maxHeight="400.0" maxWidth="100.0" minHeight="400.0" minWidth="100.0" prefHeight="400.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 					<children>
-						<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
+						<VBox fx:id="inicioBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#set01ToFront" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
 							<children>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
@@ -150,17 +241,7 @@
 								</Label>
 							</children>
 						</VBox>
-						<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
-							<children>
-								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-									<image>
-										<Image url="@../../../../icons/product_bk.png" />
-									</image>
-								</ImageView>
-								<Label alignment="CENTER" contentDisplay="CENTER" styleClass="ms-font-m-plus" text="Productos" />
-							</children>
-						</VBox>
-						<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
+						<VBox fx:id="clientesBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#set02ToFront" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
 							<children>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
@@ -170,14 +251,14 @@
 								<Label alignment="CENTER" contentDisplay="CENTER" styleClass="ms-font-m-plus" text="Clientes" />
 							</children>
 						</VBox>
-						<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
+						<VBox fx:id="inventarioBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#set03ToFront" prefHeight="100.0" prefWidth="100.0" styleClass="custom-button" VBox.vgrow="NEVER">
 							<children>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
 										<Image url="@../../../../icons/box_bk.png" />
 									</image>
 								</ImageView>
-								<Label alignment="CENTER" contentDisplay="CENTER" styleClass="ms-font-m-plus" text="Inicio" />
+								<Label alignment="CENTER" contentDisplay="CENTER" styleClass="ms-font-m-plus" text="Inventario" />
 							</children>
 						</VBox>
 					</children>

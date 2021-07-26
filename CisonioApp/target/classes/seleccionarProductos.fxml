@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="TOP_CENTER" prefHeight="897.0" prefWidth="931.0" styleClass="borde" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../../../../styles/Colores.css" />
+      <URL value="@../../../../styles/Components.css" />
+      <URL value="@../../../../styles/Fonts.css" />
+   </stylesheets>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+         <top>
+            <AnchorPane fx:id="top" maxHeight="35.0" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -blue-jeans;" styleClass="topbar" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="400.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="100.0">
+                           <children>
+                              <Label styleClass="ms-font-xl" text="Seleccionar Productos" />
+                              <Label styleClass="ms-font-l" text="Seleccione los productos precionando el cuadro del producto y cambien la cantidad si es necesario." wrapText="true" />
+                           </children>
+                        </VBox>
+                        <ScrollPane fx:id="listaSP" prefHeight="458.0" prefWidth="400.0">
+                           <content>
+                              <ListView fx:id="productos" prefHeight="456.0" prefWidth="386.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <AnchorPane maxHeight="35.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -blanco;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" layoutX="197.0" layoutY="9.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button layoutX="197.0" layoutY="9.0" mnemonicParsing="false" onAction="#continuar" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Aceptar" />
+                        <Button layoutX="207.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" styleClass="ms-font-m" text="Cerrar" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</HBox>

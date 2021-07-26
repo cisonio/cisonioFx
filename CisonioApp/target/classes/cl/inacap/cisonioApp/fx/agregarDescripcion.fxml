@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<HBox styleClass="borde" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="600.0" styleClass="raiz">
+         <left>
+            <ListView fx:id="codigos" onMouseClicked="#setDescriptionPane" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: -blanco;" styleClass="ms-font-s-plus" BorderPane.alignment="CENTER" />
+         </left>
+         <top>
+            <AnchorPane fx:id="top" maxHeight="35.0" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="200.0" style="-fx-background-color: -blue-jeans;" styleClass="topbar">
+               <children>
+                  <VBox fx:id="back" layoutX="-10.0" layoutY="-79.0" prefHeight="200.0" prefWidth="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox fx:id="close" layoutX="380.0" layoutY="-39.0" prefHeight="200.0" prefWidth="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane maxHeight="35.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" layoutY="-36.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: -blanco;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="guardarYSalirBtn" mnemonicParsing="false" onAction="#guardarYSalir" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Guardar y salir" visible="false">
+                           <HBox.margin>
+                              <Insets bottom="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <stylesheets>
+            <URL value="@../../../../styles/Colores.css" />
+            <URL value="@../../../../styles/Components.css" />
+            <URL value="@../../../../styles/Fonts.css" />
+         </stylesheets>
+         <center>
+            <ScrollPane prefViewportHeight="350.0" prefViewportWidth="500.0" style="-fx-background-color: -blanco;" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="form" prefHeight="434.0" prefWidth="482.0" spacing="15.0" style="-fx-background-color: -blanco;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox fx:id="codigoVbox" prefHeight="42.0" prefWidth="100.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label styleClass="ms-font-s-plus" text="Codigo (*)" />
+                              <TextField fx:id="codigoTxt" prefHeight="25.0" prefWidth="100.0" VBox.vgrow="NEVER" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="nombreVbox">
+                           <children>
+                              <Label styleClass="ms-font-s-plus" text="Nombre (*)" />
+                              <TextField fx:id="nombreTxt" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="empresaVbox">
+                           <children>
+                              <Label styleClass="ms-font-s-plus" text="Empresa (*)" />
+                              <ComboBox fx:id="empresaCbox" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="descripcionVbox">
+                           <children>
+                              <Label styleClass="ms-font-s-plus" text="Descripción" />
+                              <TextArea fx:id="descripcionTextArea" prefHeight="55.0" prefWidth="452.0" />
+                           </children>
+                        </VBox>
+                        <Button fx:id="guardarBtn" mnemonicParsing="false" onAction="#saveToList" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Guardar" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../../../styles/Colores.css" />
+      <URL value="@../../../../styles/Components.css" />
+      <URL value="@../../../../styles/Fonts.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</HBox>

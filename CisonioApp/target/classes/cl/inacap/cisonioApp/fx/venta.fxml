@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<HBox styleClass="borde" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane styleClass="raiz">
+         <top>
+            <AnchorPane fx:id="top" maxHeight="35.0" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: -blue-jeans;" styleClass="topbar" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <StackPane prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="detallesPane" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: -blanco;">
+                     <children>
+                        <VBox fx:id="vbox" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="80.0" prefWidth="400.0">
+                                 <children>
+                                    <Label styleClass="ms-font-xl" text="Agregar Precios de Venta" />
+                                    <Label styleClass="ms-font-l" text="Haz doble click en el precio del producto y escribe el precio de venta, sin puntos ni comas." wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <TableView fx:id="productosTV" prefHeight="200.0" prefWidth="487.0">
+                                      <columns>
+                                        <TableColumn fx:id="codigoCol" prefWidth="67.0" text="Codigo" />
+                                        <TableColumn fx:id="nombreCol" prefWidth="193.0" text="Nombre" />
+                                          <TableColumn fx:id="cantidadCol" prefWidth="30.0" text="N" />
+                                          <TableColumn fx:id="precioVenta" prefWidth="93.0" text="Precio Venta" />
+                                          <TableColumn fx:id="precioCompra" prefWidth="103.0" text="Precio Compra" />
+                                      </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <FlowPane alignment="TOP_CENTER" hgap="5.0" prefHeight="61.0" prefWidth="400.0" vgap="5.0">
+                                 <children>
+                                    <Label styleClass="ms-font-xl-plus" text="Total:   $" />
+                                    <Label fx:id="totalLbl" styleClass="ms-font-xl-plus" text="00000" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                 </VBox.margin>
+                              </FlowPane>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="clientePane" alignment="CENTER" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: -blanco;">
+                     <children>
+                        <VBox fx:id="vboxCliente" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="400.0">
+                           <children>
+                              <VBox prefHeight="80.0" prefWidth="400.0">
+                                 <children>
+                                    <Label styleClass="ms-font-xl" text="Seleccionar Cliente" />
+                                    <Label styleClass="ms-font-l" text="Para crear una nueva venta primero seleccione el cliente al que se le realizará la venta." wrapText="true" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="63.0" prefWidth="100.0" spacing="5.0">
+                                 <children>
+                                    <FlowPane alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
+                                       <children>
+                                          <Label styleClass="ms-font-m-plus" text="Cliente:" />
+                                          <ComboBox fx:id="clienteCmbox" prefWidth="300.0" />
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                              <Hyperlink fx:id="addHL" styleClass="ms-font-m-plus" text="Agregar Nuevo Cliente" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </StackPane>
+         </center>
+         <bottom>
+            <AnchorPane>
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: -blanco;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="aceptarBtn" mnemonicParsing="false" onAction="#validateCliente" style="-fx-background-color: -congo-pink;" styleClass="ms-font-m" text="Aceptar" />
+                        <Button mnemonicParsing="false" onAction="#close" styleClass="ms-font-m" text="Cerrar" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding></HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../../../styles/Components.css" />
+      <URL value="@../../../../styles/Fonts.css" />
+      <URL value="@../../../../styles/Colores.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</HBox>
